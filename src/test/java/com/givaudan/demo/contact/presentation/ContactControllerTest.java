@@ -4,8 +4,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.givaudan.demo.contact.application.CreateContact;
 import com.givaudan.demo.contact.application.DeleteContact;
 import com.givaudan.demo.contact.application.FindContact;
-import com.givaudan.demo.contact.domain.model.Address;
-import com.givaudan.demo.contact.domain.model.Contact;
+import com.givaudan.demo.contact.domain.models.Address;
+import com.givaudan.demo.contact.domain.models.Contact;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
@@ -58,7 +58,7 @@ class ContactControllerTest {
                 .telephone("01234567")
                 .address1("address 1")
                 .build();
-        mockMvc.perform(post("/contacts")
+        mockMvc.perform(post("/api/contacts")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(createContactDTO)))
                 .andExpect(status().is(HttpStatus.CREATED.value()));
@@ -81,7 +81,7 @@ class ContactControllerTest {
                 .telephone("07654321")
                 .address1("address 1 bis")
                 .build();
-        mockMvc.perform(put("/contacts")
+        mockMvc.perform(put("/api/contacts")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(contactDTO)))
                 .andExpect(status().is(HttpStatus.OK.value()));
@@ -93,9 +93,9 @@ class ContactControllerTest {
                 new Address("address 1", null, null));
         when(findContact.findById(anyString())).thenReturn(contact);
 
-        mockMvc.perform(get("/contacts/" + contact.getId())
+        mockMvc.perform(get("/api/contacts/" + contact.getId())
                         .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().is(HttpStatus.FOUND.value()));
+                .andExpect(status().is(HttpStatus.OK.value()));
     }
 
     @Test
@@ -104,14 +104,14 @@ class ContactControllerTest {
                 new Address("address 1", null, null));
         when(findContact.findAll()).thenReturn(Collections.singletonList(contact));
 
-        mockMvc.perform(get("/contacts")
+        mockMvc.perform(get("/api/contacts")
                         .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().is(HttpStatus.FOUND.value()));
+                .andExpect(status().is(HttpStatus.OK.value()));
     }
 
     @Test
     public void should_delete_contact_by_id() throws Exception {
-        mockMvc.perform(delete("/contacts/id").contentType(MediaType.APPLICATION_JSON))
+        mockMvc.perform(delete("/api/contacts/id").contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().is(HttpStatus.OK.value()));
     }
 }

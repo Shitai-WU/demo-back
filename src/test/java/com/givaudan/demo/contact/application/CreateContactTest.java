@@ -1,8 +1,8 @@
 package com.givaudan.demo.contact.application;
 
-import com.givaudan.demo.contact.domain.model.Address;
-import com.givaudan.demo.contact.domain.model.Contact;
-import com.givaudan.demo.contact.domain.repository.ContactRepository;
+import com.givaudan.demo.contact.domain.models.Address;
+import com.givaudan.demo.contact.domain.models.Contact;
+import com.givaudan.demo.contact.domain.repositories.ContactRepository;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;

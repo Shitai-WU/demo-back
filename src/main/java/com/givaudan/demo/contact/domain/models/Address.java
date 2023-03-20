@@ -1,4 +1,4 @@
-package com.givaudan.demo.contact.domain.model;
+package com.givaudan.demo.contact.domain.models;
 
 import static java.util.Objects.requireNonNull;
 

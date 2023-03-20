@@ -1,7 +1,7 @@
 package com.givaudan.demo.contact.application;
 
-import com.givaudan.demo.contact.domain.model.Contact;
-import com.givaudan.demo.contact.domain.repository.ContactRepository;
+import com.givaudan.demo.contact.domain.models.Contact;
+import com.givaudan.demo.contact.domain.repositories.ContactRepository;
 
 public class CreateContact {
     private final ContactRepository contactRepository;

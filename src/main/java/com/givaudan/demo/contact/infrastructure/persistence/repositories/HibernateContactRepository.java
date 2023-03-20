@@ -1,18 +1,17 @@
-package com.givaudan.demo.contact.infrastructure.persistence.repository;
+package com.givaudan.demo.contact.infrastructure.persistence.repositories;
 
-import com.givaudan.demo.contact.domain.model.Address;
-import com.givaudan.demo.contact.domain.model.Contact;
-import com.givaudan.demo.contact.domain.repository.ContactRepository;
-import com.givaudan.demo.contact.infrastructure.persistence.dao.ContactDAO;
-import com.givaudan.demo.contact.infrastructure.persistence.entity.ContactEntity;
-import com.givaudan.demo.contact.infrastructure.persistence.mapper.ContactEntityMapper;
+import com.givaudan.demo.contact.domain.models.Address;
+import com.givaudan.demo.contact.domain.models.Contact;
+import com.givaudan.demo.contact.domain.repositories.ContactRepository;
+import com.givaudan.demo.contact.infrastructure.persistence.daos.ContactDAO;
+import com.givaudan.demo.contact.infrastructure.persistence.entities.ContactEntity;
+import com.givaudan.demo.contact.infrastructure.persistence.mappers.ContactEntityMapper;
 import org.mapstruct.factory.Mappers;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
-@Transactional
 public class HibernateContactRepository implements ContactRepository {
     private final ContactDAO contactDAO;
 
@@ -29,6 +28,7 @@ public class HibernateContactRepository implements ContactRepository {
     }
 
     @Override
+    @Transactional
     public Contact update(Contact contact) {
         ContactEntity contactEntity = contactDAO.findById(contact.getId()).orElseThrow();
 
