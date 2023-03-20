@@ -1,6 +1,6 @@
-package com.givaudan.demo.contact.domain.repository;
+package com.givaudan.demo.contact.domain.repositories;
 
-import com.givaudan.demo.contact.domain.model.Contact;
+import com.givaudan.demo.contact.domain.models.Contact;
 
 import java.util.List;
 

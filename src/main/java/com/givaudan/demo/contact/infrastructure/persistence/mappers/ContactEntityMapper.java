@@ -1,7 +1,7 @@
-package com.givaudan.demo.contact.infrastructure.persistence.mapper;
+package com.givaudan.demo.contact.infrastructure.persistence.mappers;
 
-import com.givaudan.demo.contact.domain.model.Contact;
-import com.givaudan.demo.contact.infrastructure.persistence.entity.ContactEntity;
+import com.givaudan.demo.contact.domain.models.Contact;
+import com.givaudan.demo.contact.infrastructure.persistence.entities.ContactEntity;
 import org.mapstruct.Mapper;
 
 import java.util.Collection;

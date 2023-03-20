@@ -1,4 +1,4 @@
-package com.givaudan.demo.contact.domain.model;
+package com.givaudan.demo.contact.domain.models;
 
 import com.givaudan.demo.shared.AggregateRoot;
 import lombok.Getter;

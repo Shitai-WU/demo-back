@@ -3,7 +3,7 @@ package com.givaudan.demo.contact.presentation;
 import com.givaudan.demo.contact.application.CreateContact;
 import com.givaudan.demo.contact.application.DeleteContact;
 import com.givaudan.demo.contact.application.FindContact;
-import com.givaudan.demo.contact.domain.model.Contact;
+import com.givaudan.demo.contact.domain.models.Contact;
 import org.mapstruct.factory.Mappers;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/contacts")
+@RequestMapping("/api/contacts")
 public class ContactController {
     private final CreateContact createContact;
 
@@ -44,13 +44,13 @@ public class ContactController {
     @GetMapping("/{id}")
     public ResponseEntity<ContactDTO> find(@PathVariable String id) {
         Contact contact = findContact.findById(id);
-        return ResponseEntity.status(HttpStatus.FOUND).body(contactMapper.contactToContactDTO(contact));
+        return ResponseEntity.status(HttpStatus.OK).body(contactMapper.contactToContactDTO(contact));
     }
 
     @GetMapping
     public ResponseEntity<List<ContactDTO>> findAll() {
         List<Contact> contacts = findContact.findAll();
-        return ResponseEntity.status((HttpStatus.FOUND)).body(contactMapper.contactsToContactDTOs(contacts));
+        return ResponseEntity.status((HttpStatus.OK)).body(contactMapper.contactsToContactDTOs(contacts));
     }
 
     @DeleteMapping("/{id}")

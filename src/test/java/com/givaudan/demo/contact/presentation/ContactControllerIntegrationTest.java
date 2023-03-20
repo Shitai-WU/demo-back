@@ -1,8 +1,8 @@
 package com.givaudan.demo.contact.presentation;
 
 import com.givaudan.demo.contact.application.CreateContact;
-import com.givaudan.demo.contact.domain.model.Address;
-import com.givaudan.demo.contact.domain.model.Contact;
+import com.givaudan.demo.contact.domain.models.Address;
+import com.givaudan.demo.contact.domain.models.Contact;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
@@ -46,7 +46,7 @@ class ContactControllerIntegrationTest {
                 .telephone("01234567")
                 .address1("address 1")
                 .build();
-        ResponseEntity<ContactDTO> responseEntity = restTemplate.postForEntity("http://localhost:" + port + "/contacts", createContactDTO, ContactDTO.class);
+        ResponseEntity<ContactDTO> responseEntity = restTemplate.postForEntity("http://localhost:" + port + "/api/contacts", createContactDTO, ContactDTO.class);
 
         assertEquals(HttpStatus.CREATED, responseEntity.getStatusCode());
     }
@@ -67,7 +67,7 @@ class ContactControllerIntegrationTest {
                 .telephone("07654321")
                 .address1("address 1 bis")
                 .build();
-        ResponseEntity<ContactDTO> responseEntity = restTemplate.exchange("http://localhost:" + port + "/contacts", HttpMethod.PUT, new HttpEntity<>(contactDTO), ContactDTO.class);
+        ResponseEntity<ContactDTO> responseEntity = restTemplate.exchange("http://localhost:" + port + "/api/contacts", HttpMethod.PUT, new HttpEntity<>(contactDTO), ContactDTO.class);
 
         assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
     }
@@ -84,9 +84,8 @@ class ContactControllerIntegrationTest {
                 .telephone("07654321")
                 .address1("address 1 bis")
                 .build();
-        ResponseEntity<ContactDTO> responseEntity = restTemplate.exchange("http://localhost:" + port + "/contacts", HttpMethod.PUT, new HttpEntity<>(contactDTO), ContactDTO.class);
+        ResponseEntity<ContactDTO> responseEntity = restTemplate.exchange("http://localhost:" + port + "/api/contacts", HttpMethod.PUT, new HttpEntity<>(contactDTO), ContactDTO.class);
 
-        // TODO create exception to remap the code
         assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, responseEntity.getStatusCode());
     }
 
@@ -96,28 +95,24 @@ class ContactControllerIntegrationTest {
                 new Address("address 1", null, null));
         createContact.create(contact);
 
-        ResponseEntity<ContactDTO> responseEntity = restTemplate.getForEntity("http://localhost:" + port + "/contacts/" + contact.getId(), ContactDTO.class);
+        ResponseEntity<ContactDTO> responseEntity = restTemplate.getForEntity("http://localhost:" + port + "/api/contacts/" + contact.getId(), ContactDTO.class);
 
-        assertEquals(HttpStatus.FOUND, responseEntity.getStatusCode());
+        assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
     }
 
     @Test
     public void should_return_not_found_code_when_contact_not_found() {
-        ResponseEntity<ContactDTO> responseEntity = restTemplate.getForEntity("http://localhost:" + port + "/contacts/id", ContactDTO.class);
-
-        // TODO create exception to remap the code
+        ResponseEntity<ContactDTO> responseEntity = restTemplate.getForEntity("http://localhost:" + port + "/api/contacts/id", ContactDTO.class);
 
         assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, responseEntity.getStatusCode());
     }
 
     @Test
     public void should_return_all_contacts() {
-        ResponseEntity<List<ContactDTO>> responseEntity = restTemplate.exchange("http://localhost:" + port + "/contacts", HttpMethod.GET, null, new ParameterizedTypeReference<>() {
+        ResponseEntity<List<ContactDTO>> responseEntity = restTemplate.exchange("http://localhost:" + port + "/api/contacts", HttpMethod.GET, null, new ParameterizedTypeReference<>() {
         });
 
-        // TODO create exception to remap the code
-
-        assertEquals(HttpStatus.FOUND, responseEntity.getStatusCode());
+        assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
     }
 
     @Test
@@ -126,7 +121,7 @@ class ContactControllerIntegrationTest {
                 new Address("address 1", null, null));
         createContact.create(contact);
 
-        ResponseEntity<Void> responseEntity = restTemplate.exchange("http://localhost:" + port + "/contacts/" + contact.getId(), HttpMethod.DELETE, null, Void.class);
+        ResponseEntity<Void> responseEntity = restTemplate.exchange("http://localhost:" + port + "/api/contacts/" + contact.getId(), HttpMethod.DELETE, null, Void.class);
 
         assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
     }

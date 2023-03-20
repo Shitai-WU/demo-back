@@ -1,6 +1,6 @@
 package com.givaudan.demo.contact.application;
 
-import com.givaudan.demo.contact.domain.repository.ContactRepository;
+import com.givaudan.demo.contact.domain.repositories.ContactRepository;
 
 public class DeleteContact {
     private final ContactRepository contactRepository;

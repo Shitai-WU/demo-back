@@ -1,7 +1,7 @@
 package com.givaudan.demo.contact.presentation;
 
-import com.givaudan.demo.contact.domain.model.Address;
-import com.givaudan.demo.contact.domain.model.Contact;
+import com.givaudan.demo.contact.domain.models.Address;
+import com.givaudan.demo.contact.domain.models.Contact;
 import org.mapstruct.Mapper;
 
 import java.time.LocalDateTime;

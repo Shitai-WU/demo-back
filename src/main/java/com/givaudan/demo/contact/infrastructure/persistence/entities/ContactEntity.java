@@ -1,4 +1,4 @@
-package com.givaudan.demo.contact.infrastructure.persistence.entity;
+package com.givaudan.demo.contact.infrastructure.persistence.entities;
 
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;

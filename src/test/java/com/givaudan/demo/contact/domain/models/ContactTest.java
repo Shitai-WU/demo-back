@@ -1,4 +1,4 @@
-package com.givaudan.demo.contact.domain.model;
+package com.givaudan.demo.contact.domain.models;
 
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;

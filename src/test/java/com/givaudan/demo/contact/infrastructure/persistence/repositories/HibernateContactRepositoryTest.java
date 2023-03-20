@@ -1,9 +1,9 @@
-package com.givaudan.demo.contact.infrastructure.persistence.repository;
+package com.givaudan.demo.contact.infrastructure.persistence.repositories;
 
-import com.givaudan.demo.contact.domain.model.Address;
-import com.givaudan.demo.contact.domain.model.Contact;
-import com.givaudan.demo.contact.infrastructure.persistence.dao.ContactDAO;
-import com.givaudan.demo.contact.infrastructure.persistence.entity.ContactEntity;
+import com.givaudan.demo.contact.domain.models.Address;
+import com.givaudan.demo.contact.domain.models.Contact;
+import com.givaudan.demo.contact.infrastructure.persistence.daos.ContactDAO;
+import com.givaudan.demo.contact.infrastructure.persistence.entities.ContactEntity;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
